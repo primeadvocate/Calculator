@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+  </head>
+
+  <body class="p-0 m-0 box-border overflow-hidden flex flex-col">
+    <div id="Navbars">
+      <div
+        class="nav-container-collapsed h-full w-[55px] bg-[#040d25] fixed left-0 p-3 box-border transition-all duration-500 ease-in-out"
+        id="nav-container-collapsed"
+      >
+        <div class="cursor-pointer w-full" id="open-button">
+          <i
+            class="fas fa-bars p-2"
+            style="color: #ffffff; padding-right: 4px; width: 100%"
+            onclick="openNavbar()"
+          ></i>
+        </div>
+
+        <div class="logo mt-4 p-1">
+          <img src="rocket_launch_white_24dp.svg" />
+        </div>
+
+        <div class="menu-icons">
+          <ul class="mt-24 flex flex-col gap-y-4 relative">
+            <li
+              class="hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out "
+            >
+              <a href="#" title="Dashboard"><i class="fas fa-qrcode p-2" style="color: #ffffff"></i></a>
+            </li>
+            <li
+              class="hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+            >
+              <a href="#" title="About"><i class="fas fa-question-circle p-2" style="color: #ffffff"></i></a>
+            </li>
+            <li
+              class="hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+            >
+              <a href="#" title="Services">
+              <i class="fas fa-sliders-h p-2" style="color: #ffffff"></i></a>
+            </li>
+            <li
+              class="hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+            >
+              <a href="#" title="Contact">
+              <i class="fas fa-envelope p-2" style="color: #ffffff"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="nav-container h-full w-[250px] bg-[#040d25] fixed left-0 transition-all duration-500 ease-in-out"
+        id="nav-container"
+      >
+        <div class="nav p-3">
+          <div class="flex justify-end">
+            <img
+              src="close_white_24dp.svg"
+              class="border-2 rounded-lg cursor-pointer"
+              id="close-button"
+              onclick="closeNavbar()"
+              
+            />
+          </div>
+          <div class="flex gap-2 mt-4">
+            <img src="rocket_launch_white_24dp.svg" />
+            <header class="text-white text-bold text-[24px] select-none">
+              My Portfolio Page
+            </header>
+          </div>
+          <div>
+            <ul class="mt-24 flex flex-col gap-y-4">
+              <li
+                class="text-white hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+              >
+                <a href="#"
+                  ><i class="fas fa-qrcode p-2" style="color: #ffffff"></i
+                  >Dashboard</a
+                >
+              </li>
+              <li
+                class="text-white hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+              >
+                <a href="#"
+                  ><i
+                    class="fas fa-question-circle p-2"
+                    style="color: #ffffff"
+                  ></i
+                  >About</a
+                >
+              </li>
+              <li
+                class="text-white hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+              >
+                <a href="#"
+                  ><i class="fas fa-sliders-h p-2" style="color: #ffffff"></i
+                  >Services</a
+                >
+              </li>
+              <li
+                class="text-white hover:border-l border-l-gray-500 hover:translate-x-2 transition-all duration-300 ease-in-out"
+              >
+                <a href="#"
+                  ><i class="fas fa-envelope p-2" style="color: #ffffff"></i
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="contain bg-cyan-300 h-[100vh] ml-[250px] flex items-center justify-center"
+      id="contain"
+        >
+      <div class="calculator bg-[#040d25] p-5 rounded-[10px]">
+        <form>
+          <div class="flex my-4 text-[30px]">
+            <input
+              type="text"
+              name="display"
+              class="h-12 rounded-[10px] outline-none w-[310px] bg-transparent text-white text-right"
+              id="numbers-only"
+            />
+          </div>
+
+          <div>
+            <input
+              type="button"
+              value="AC"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value = '' "
+            />
+
+            <input
+              type="button"
+              value="DE"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value = display.value.toString().slice(0,-1)"
+            />
+
+            <input
+              type="button"
+              value="."
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value += '.' "
+            />
+
+            <input
+              type="button"
+              value="/"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value += '/' "
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="9"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '9' "
+            />
+
+            <input
+              type="button"
+              value="8"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '8' "
+            />
+
+            <input
+              type="button"
+              value="7"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '7' "
+            />
+
+            <input
+              type="button"
+              value="*"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value += '*' "
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="6"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '6' "
+            />
+
+            <input
+              type="button"
+              value="5"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '5' "
+            />
+
+            <input
+              type="button"
+              value="4"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '4' "
+            />
+
+            <input
+              type="button"
+              value="-"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value += '-' "
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="1"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '1' "
+            />
+
+            <input
+              type="button"
+              value="2"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '2' "
+            />
+
+            <input
+              type="button"
+              value="3"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '3' "
+            />
+
+            <input
+              type="button"
+              value="+"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-cyan-200 text-[20px] cursor-pointer m-2"
+              onclick="display.value += '+' "
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="00"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '00' "
+            />
+
+            <input
+              type="button"
+              value="0"
+              class="w-[60px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-white text-[20px] cursor-pointer m-2"
+              onclick="display.value += '0' "
+            />
+
+            <input
+              type="button"
+              value="="
+              class="w-[145px] h-[60px] rounded-[10px] bg-transparent shadow-xl text-pink-500 text-[20px] cursor-pointer m-2"
+              onclick="display.value = eval(display.value)"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let inputField = document.getElementById("numbers-only");
+
+      inputField.onkeydown = (e) => {
+        if (isNaN(event.key)) {
+          event.preventDefault();
+        }
+      };
+
+     function closeNavbar () {
+
+
+        const navbar = document.getElementById('Navbars');
+        const navContainer = document.getElementById('nav-container');
+        const navContainerCollapsed = document.getElementById('nav-container-collapsed');
+        const container = document.getElementById('contain');
+
+        navContainer.style.display = "none";
+        navContainerCollapsed.style.display = "initial";
+        container.style.marginLeft = "55px";
+          
+        
+    }
+
+      
+
+      function openNavbar () {
+        const navContainerCollapsed = document.getElementById('nav-container-collapsed');
+        const navContainer = document.getElementById('nav-container');
+        const container = document.getElementById('contain');
+
+        navContainerCollapsed.style.display = "none";
+        navContainer.style.display = "initial";
+        container.style.marginLeft = "250px";
+      }
+
+
+    </script>
+  </body>
+</html>
